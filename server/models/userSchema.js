@@ -3,33 +3,40 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
   email: {
     type: String,
-    unique: true
+    unique: true,
+    lowercase: true
   }
   firstName: {
-    type: String
+    type: String,
+    lowercase: true
   }
   lastName: {
-    type: String
+    type: String,
+    lowercase: true
   }
   age: {
     type: Number
   }
   streetAddress: {
-    type: String
+    type: String,
+    lowercase: true
   }
   city: {
-    type: String
+    type: String,
+    lowercase: true
   }
   state: {
-    type: String
+    type: String,
+    lowercase: true
   }
   country: {
-    type: String
+    type: String,
+    lowercase: true
   }
   zipcode: {
-    type: String
+    type: String,
+    lowercase: true
   }
 })
-
 
 module.exports(mongoose.model("User", userSchema))
