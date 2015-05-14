@@ -6,11 +6,13 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 
 
+//controllers // schema's
 
 
 //express
 
 var app = express();
+
 
 
 //middleware
@@ -21,6 +23,7 @@ var requireAuth = function(req, res, next) {
 }
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use(session({
   secret: "aoweiry98n1sr71ADRB3awe3",
@@ -51,7 +54,7 @@ passport.deserializeUser(function(obj, done) {
 
 
 
-// end points
+// Facebook end points
 
 
 app.get('/', function(req, res) { // testing to if server works
@@ -71,16 +74,36 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
   scope: ['email']
 }));
 
-
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
   successRedirect: "/confirm/success",
   failureRedirect: "/confirm/failure"
 }))
-
 app.get('/', requireAuth, function(req, res) {
   return (res.sendFile(__dirname + "public/views/landing.html"))
 })
-
 app.get('/me', function(req, res) {
   res.send(req.user);
 })
+
+
+// schema endpoints
+
+
+
+
+//connection
+
+var port = 3000
+var mongoUri = "mongodb://localhost:27017/mini-birds-mongoose";
+
+mongoose.connect(mongoUri);
+mongoose.connection.once('open', function() {
+  console.log('Connected to MongoDB at', mongoUri);
+});
+
+
+
+
+app.listen(port, function() {
+  console.log("listening to port: ", port);
+});
