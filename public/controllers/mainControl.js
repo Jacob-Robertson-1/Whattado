@@ -1,22 +1,21 @@
-var app = angular.module("whattado")
+var app = angular.module("myapp")
 
-app.controller("mainControl", function() {
+app.controller("mainControl", function($scope) {
 
-  $scope.getParseData = function() {
-    parseService.getData().then(function(response) {
-        $scope.messages = response.data.results;
-        console.log(response);
-      },
-      function(err) {
-        console.log(err)
-      })
-  };
+  /* $scope.getFavoriteLocatoin = function(req, res) {
+     parseService.getFavoriteLocation().then(function(response) {
+         $scope.favoriteLocation = response.data.results;
+         console.log(response);
+       },
+       function(err) {
+         console.log(err)
+       })
+   };
+   $scope.getParseData();
 
-  $scope.getParseData();
-  $scope.postData = function() {
-    mainService.postData($scope.firstName)
-    mainService.postData($scope.lastName)
-    $scope.message = '';
-  };
+   $scope.postFavoriteLocation = function() {
+     mainService.postFavoriteLocation($scope.LocationName)
+     $scope.favoriteLocation = '';
+   };*/
 
 });

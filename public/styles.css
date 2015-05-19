@@ -1,0 +1,78 @@
+html body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: #E0E0E0;
+}
+
+header {
+  height: 75px;
+  width: 100%;
+  background: #8AC7E8;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.FriendListContainer {
+  height: 600px;
+  right-border: 2px solid;
+  border-color: black;
+  width: 350px;
+  background: #ccc;
+  margin-left: 100px;
+  margin-top: 25px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.search {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.friendContainer {
+  width: 250px;
+  height: 75px;
+  text-align: left;
+  background-color: #EEEEEE;
+  margin: 0px 10px;
+}
+
+.friendContainer ul li img {
+  width: 60px;
+  height: 60px;
+  float: right;
+  margin: 10px 10px 0px 0px;
+}
+
+.friendContainer ul li h4 {
+  margin-top: 10px;
+  margin-left: 15px;
+  padding-top: 15px;
+}
+
+.friendContainer ul li h5 {
+  margin-left: 30px;
+  padding: 0px 0px 15px 5px;
+}
+
+.facebookLogin {
+  color: white;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+}
+
+.homePagePic {
+  width: 650px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
