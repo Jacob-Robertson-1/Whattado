@@ -17,16 +17,30 @@ var userSchema = new mongoose.Schema({
     lowercase: true
   },
   displayName: {
-    type: String
+    type: String,
   },
   age: {
     type: Number
   },
-  location: {
-    type: String
+  streetAddress: {
+    type: String,
+    lowercase: true
   },
-  provider: {
-    type: String
+  city: {
+    type: String,
+    lowercase: true
+  },
+  state: {
+    type: String,
+    lowercase: true
+  },
+  country: {
+    type: String,
+    lowercase: true
+  },
+  zipcode: {
+    type: String,
+    lowercase: true
   }
 })
 userSchema.pre('save', function(next) {
