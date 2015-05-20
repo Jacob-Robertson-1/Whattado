@@ -94,7 +94,7 @@ app.get('/me', function(req, res) {
 //connection
 
 var port = 3000
-var mongoUri = "mongodb://localhost:27017/mini-birds-mongoose";
+var mongoUri = "mongodb://localhost:27017/Whattado";
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
