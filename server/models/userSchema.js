@@ -5,6 +5,7 @@ var userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
+    sparse: true,
     lowercase: true
   },
   firstName: {
@@ -15,28 +16,17 @@ var userSchema = new mongoose.Schema({
     type: String,
     lowercase: true
   },
+  displayName: {
+    type: String
+  },
   age: {
     type: Number
   },
-  streetAddress: {
-    type: String,
-    lowercase: true
+  location: {
+    type: String
   },
-  city: {
-    type: String,
-    lowercase: true
-  },
-  state: {
-    type: String,
-    lowercase: true
-  },
-  country: {
-    type: String,
-    lowercase: true
-  },
-  zipcode: {
-    type: String,
-    lowercase: true
+  provider: {
+    type: String
   }
 })
 userSchema.pre('save', function(next) {

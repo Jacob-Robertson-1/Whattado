@@ -39,7 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-passport.use(new FacebookStrategy({
+/*passport.use(new FacebookStrategy({
   clientID: "618772378257479",
   clientSecret: "bf22575c973bfa120357f91bc7ab26cf",
   callbackURL: "http://localhost:3000/auth/facebook/callback"
@@ -54,13 +54,14 @@ passport.use(new FacebookStrategy({
     //No user was found... so create a new user with values from Facebook (all the profile. stuff)
     if (!user) {
       user = new User({
+        id: profile.id,
+        //email: profile.emails[0].value,
         firstName: profile.name.givenName,
         lastName: profile.name.familyName,
         gender: profile.gender,
+        displayName: profile.displayName,
         location: profile.location,
         picture: profile.picture,
-        ageRange: profile.age_range,
-        email: profile.emails[0].value,
         username: profile.username,
         provider: 'facebook',
         //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
@@ -75,6 +76,7 @@ passport.use(new FacebookStrategy({
       return done(err, user);
     }
   })
+  return done(null, profile)
 }));
 
 passport.serializeUser(function(user, done) {
@@ -83,7 +85,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(obj, done) {
   return null, obj
-});
+});*/
 
 
 
@@ -102,22 +104,22 @@ app.get('/api/confirm/failure', function(req, res) {
   res.send('you failed')
 })
 
+/* Facebook o auth stuff
+
 app.get('/auth/facebook', passport.authenticate('facebook', {
   scope: ['email']
 }));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
+  passport.authenticate('facebook,', {
+    successRedirect: "/landing",
     failureRedirect: '/login'
-  }),
-  function(req, res) {
-    // Successful authentication, home.
-    res.redirect('/landing')
-  })
+  }));
+
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
-});
+});*/
 /*app.get('/', requireAuth, function(req, res) {
   return (res.sendFile(__dirname + "public/views/landing.html"))
 })
@@ -131,6 +133,76 @@ app.get('/logout', function(req, res) {
       })
       */
 // schema endpoints
+
+
+//posts
+app.post('/api/users', function(req, res) {
+  var user = new User(req.body);
+  user.save(function(err, new_user) {
+    if (err) {
+      console.log("can't add user", err)
+    }
+    res.json(new_user);
+  });
+});
+
+
+app.post('/api/users/:userId/favorite_places', function(req, res) {
+  Place.findOne({
+    _id: req.body._id
+  }).exec().then(function(place) {
+    if (!place) {
+      return res.status(404).end();
+    }
+    User.findOne({
+      _id: req.params.userId
+    }).exec().then(function(user) {
+      user.favorite_places.push(place);
+      user.save(function(err) {
+        if (err) {
+          console.log("cant add this place", err);
+        }
+        res.json(user);
+      });
+    });
+  });
+});
+
+
+app.post("/api/places", function(req, res) {
+  var place = new Place(req.body);
+  place.save(function(err, new_place) {
+    if (err) {
+      console.log('cant find Place', err)
+    }
+    res.json(new_place)
+  })
+})
+
+//get
+
+app.get('/api/users', function(req, res) {
+  User.find().populate('favorite_places').exec().then(function(err, new_place) {
+    return res.json(users);
+  })
+})
+
+
+
+//delete
+
+app.delete('/api/users/userId', function(req, res) {
+  User.remove({
+    _id: req.params.userId
+  }, function(err) {
+    if (err) {
+      console.log('cant delete user', err)
+    }
+    res.status(200).end();
+  })
+})
+
+
 
 
 
