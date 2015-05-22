@@ -3,12 +3,22 @@
 
 <head>
   <title></title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <header>
-  <a href="#/login">Login</a>
+  <div class="UserLinks">
+    <a ui-sref="myFavorites"> My favorites</a>
+    <a ui-sref="myReviews"> My Reviews</a>
+    <a ui-sref="myWanttotrylist"> Want to try List</a>
+    <a ui-sref="landing">Home Page</a>
+  </div>
+  <div class="rightHeadContainer">
+    <a ui-sref="register">Create Account</a>
+    <a ui-sref="login">Login</a>
+    <a ui-sref="home">Logout</a>
+  </div>
 </header>
 
 <body ng-controller="mainControl">
@@ -24,9 +34,15 @@
   <script src="/controllers/loginControl.js"></script>
   <script src="/controllers/userControl.js"></script>
   <script src="/controllers/landingControl.js"></script>
+  <script src="/controllers/myLocationsControl.js"></script>
+  <script src="/controllers/myReviewsControl.js"></script>
+  <script src="/controllers/RegisterControl.js"></script>
+  <script src="/controllers/myWantToTryControl.js"></script>
   <script src="/services/mainService.js"></script>
   <script src="/services/landingService.js"></script>
   <script src="/services/userService.js"></script>
+  <script src="/services/loginService.js"></script>
+  <script srce="/directives/loginDirective.js"></script>
 </body>
 
 </html>

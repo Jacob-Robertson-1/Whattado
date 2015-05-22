@@ -9,7 +9,8 @@ var mongoose = require('mongoose')
 
 //controllers // schema's
 //require user model
-var User = require('./server/models/userSchema')
+var User = require('./server/models/userSchema');
+var FavoriteLocation = require("./server/models/LocationsSchema");
 
 //express
 
@@ -91,7 +92,7 @@ passport.deserializeUser(function(obj, done) {
 
 // Facebook end points
 
-
+// test points
 app.get('/api', function(req, res) { // testing to if server works
   res.send('hello')
 })
@@ -136,6 +137,8 @@ app.get('/logout', function(req, res) {
 
 
 //posts
+
+/*Creates a new user*/
 app.post('/api/users', function(req, res) {
   var user = new User(req.body);
   user.save(function(err, new_user) {
@@ -147,8 +150,22 @@ app.post('/api/users', function(req, res) {
 });
 
 
-app.post('/api/users/:userId/favorite_places', function(req, res) {
-  Place.findOne({
+
+/*Creating a place*/
+app.post("/api/favoriteLocation", function(req, res) {
+  var place = new FavoriteLocation(req.body);
+  place.save(function(err, new_place) {
+    if (err) {
+      console.log('cant create FavoriteLocation', err)
+    }
+    res.json(new_place)
+  })
+})
+
+
+/* adds a new place to the userID*/
+app.post('/api/users/:userId/favoriteLocation', function(req, res) {
+  FavoriteLocation.findOne({
     _id: req.body._id
   }).exec().then(function(place) {
     if (!place) {
@@ -157,7 +174,7 @@ app.post('/api/users/:userId/favorite_places', function(req, res) {
     User.findOne({
       _id: req.params.userId
     }).exec().then(function(user) {
-      user.favorite_places.push(place);
+      user.FavoriteLocations.push(place);
       user.save(function(err) {
         if (err) {
           console.log("cant add this place", err);
@@ -169,28 +186,28 @@ app.post('/api/users/:userId/favorite_places', function(req, res) {
 });
 
 
-app.post("/api/places", function(req, res) {
-  var place = new Place(req.body);
-  place.save(function(err, new_place) {
-    if (err) {
-      console.log('cant find Place', err)
-    }
-    res.json(new_place)
-  })
-})
 
 //get
 
+/*gets the users Places*/
 app.get('/api/users', function(req, res) {
-  User.find().populate('favorite_places').exec().then(function(err, new_place) {
+  User.find().populate('favorites').exec().then(function(err, users) {
     return res.json(users);
   })
 })
+
+app.get('/api/users', function(req, res) {
+  Whattado.collection.find(users)
+  return res.json(users)
+
+})
+
 
 
 
 //delete
 
+/*Deletes a User*/
 app.delete('/api/users/userId', function(req, res) {
   User.remove({
     _id: req.params.userId
@@ -202,8 +219,28 @@ app.delete('/api/users/userId', function(req, res) {
   })
 })
 
+// removes a place from your favorites
+app.delete('/api/users/favorites/:placeId', function(req, res) {
+  Place.remove({
+    _id: req.params.placeId
+  }, function(err) {
+    if (err) {
+      console.log("can't delete place", err);
+    }
+    res.status(200).end();
+  });
+});
 
 
+//put
+//Changes something on a favorite place
+app.put("/api/places/:placeId", function(req, res) {
+  Place.update('req.body', function(err) {
+    if (err) {
+      console.log("can't update place", err)
+    }
+  });
+});
 
 
 

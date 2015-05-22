@@ -1,8 +1,14 @@
-<h1>LOGIN PAGE</h1>
-<input placeholder="username" model="userName">
-</br>
-<input placeholder="password" model="password">
-</br>
-<a href="#/landing">
-  <button class="LoginButton">Login</button>
-</a>
+<div class="wrap">
+  <form role="form" name="loginform">
+    <div class="form-group">
+      <h2 class> Welcome</h2>
+      <h4> Please Log in</h4>
+      <label for="email">Email</label>
+      <input type="text" placeholder=" Enter Emsail" class="form-control" required ng-model="user.email">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input placeholder="Password" model="password" type="password" id="inputPassword" class="form-control" required ng-model=" user.pass">
+      </div>
+      <button class="btn-btn-default" type="submit" ng-disabled="form.$invalid" ng-click="login(user)" login-directive>Login</button>
+  </form>
+  </div>

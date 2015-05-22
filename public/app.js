@@ -26,6 +26,27 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "/views/user.html",
       controller: "userControl"
     })
+    .state("myLocations", {
+      url: '/mylocations',
+      templateUrl: "/views/mylocations.html",
+      controller: "myLocationsControl"
+    })
+    .state('myReviews', {
+      url: "/myreviews",
+      templateUrl: "/views/myreviews.html",
+      controller: "myReviewsControl"
+    })
+    .state('wantToTry', {
+      url: "/myWantToTry",
+      templateUrl: "/views/wantToTry.html",
+      controller: "myWantToTryControl"
+    })
+    .state('register', {
+      url: "/register",
+      templateUrl: "/views/register.html",
+      controller: "RegisterControl"
+    })
+
 
 
 });

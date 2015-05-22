@@ -17,17 +17,54 @@ var userSchema = new mongoose.Schema({
     lowercase: true
   },
   displayName: {
-    type: String
+    type: String,
   },
   age: {
     type: Number
   },
-  location: {
+  streetAddress: {
+    type: String,
+    lowercase: true
+  },
+  city: {
+    type: String,
+    lowercase: true
+  },
+  state: {
+    type: String,
+    lowercase: true
+  },
+  country: {
+    type: String,
+    lowercase: true
+  },
+  zipcode: {
+    type: String,
+    lowercase: true
+  },
+  friends: {
+    myfriends: [{
+      type: String
+    }]
+  },
+  reviews: {
+    myReviews: [{
+      /*type: Schema.Types.ObjectId,
+      ref: "FavoriteLocation"*/
+    }]
+  },
+  wantToTry: {
     type: String
   },
-  provider: {
-    type: String
+  favorites: {
+    myFavorites: [{
+      /*type: Schema.Types.ObjectId,
+  ref: "FavoriteLocation"
+*/
+    }]
+
   }
+
 })
 userSchema.pre('save', function(next) {
   var user = this;

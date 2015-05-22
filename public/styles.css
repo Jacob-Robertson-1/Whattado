@@ -8,66 +8,22 @@ html body {
 header {
   height: 75px;
   width: 100%;
-  background: #8AC7E8;
+  background: #6DA0B4;
+  color: white;
+  margin: 0 auto;
+  position: fixed;
 }
 
 h1 {
   text-align: center;
 }
 
-.container {
-  max-width: 100%;
-  max-height: 100%;
+.UserLinks {
+  float: left;
 }
 
-.FriendListContainer {
-  height: 600px;
-  right-border: 2px solid;
-  border-color: black;
-  width: 350px;
-  background: #ccc;
-  margin-left: 100px;
-  margin-top: 25px;
-  overflow: scroll;
-  overflow-x: hidden;
-}
-
-.search {
-  margin-top: 15px;
-  margin-left: 15px;
-}
-
-.friendContainer {
-  width: 250px;
-  height: 75px;
-  text-align: left;
-  background-color: #EEEEEE;
-  margin: 0px 10px;
-}
-
-.friendContainer ul li img {
-  width: 60px;
-  height: 60px;
+.rightHeadContainer {
   float: right;
-  margin: 10px 10px 0px 0px;
-}
-
-.friendContainer ul li h4 {
-  margin-top: 10px;
-  margin-left: 15px;
-  padding-top: 15px;
-}
-
-.friendContainer ul li h5 {
-  margin-left: 30px;
-  padding: 0px 0px 15px 5px;
-}
-
-.LoginButton {
-  color: white;
-  background-color: blue;
-  display: flex;
-  justify-content: center;
 }
 
 .homePagePic {
@@ -75,4 +31,101 @@ h1 {
   height: 500px;
   display: flex;
   justify-content: center;
+}
+
+.wrap {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #dcdcdc;
+  padding: 20px;
+  background: white;
+}
+
+.homeLocationContainer {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 15px;
+  margin-top: 75px;
+  margin-bottom: 15px;
+  padding: 20px;
+  float: left;
+  margin: 0 auto;
+}
+
+.locationsContainer {
+  width: 850px;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  float: left;
+  margin: 0 auto;
+}
+
+.suggestedLocationContainer {
+  height: 275px;
+  width: 250px;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  float: left;
+  margin: 10px;
+  background: #6DA0B4;
+}
+
+.trylinks {
+  margin-bottom: 10px;
+  float: left;
+}
+
+.suggestedLocationName {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.suggestedLocationImage {
+  width: 125px;
+  height: 125px;
+  float: left;
+  margin-right: 10px
+}
+
+.suggestedLocationImage img {
+  width: 125px;
+  height: 125px;
+}
+
+.location-actions {
+  float: left;
+  padding: 10px 0 0 0;
+}
+
+.friendsListContainer {
+  width: 215px;
+  max-height: 800px;
+  float: left;
+  padding-left: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.friendContainer {
+  width: 200px;
+  height: 80px;
+  background: white;
+  margin: 5px 0px 5px 0px;
+}
+
+.friendImage img {
+  width: 75px;
+  height: 75px;
+  float: left;
+  padding: 6px 5px 0px 6px;
+}
+
+.templateContainer {
+  padding: 10px;
 }
