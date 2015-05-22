@@ -10,7 +10,7 @@ var mongoose = require('mongoose')
 //controllers // schema's
 //require user model
 var User = require('./server/models/userSchema');
-var favorite_places = require("./server/models/LocationSchema");
+var FavoriteLocation = require("./server/models/LocationsSchema");
 
 //express
 
@@ -152,11 +152,11 @@ app.post('/api/users', function(req, res) {
 
 
 /*Creating a place*/
-app.post("/api/places", function(req, res) {
-  var place = new Place(req.body);
+app.post("/api/favoriteLocation", function(req, res) {
+  var place = new FavoriteLocation(req.body);
   place.save(function(err, new_place) {
     if (err) {
-      console.log('cant create Place', err)
+      console.log('cant create FavoriteLocation', err)
     }
     res.json(new_place)
   })
@@ -164,8 +164,8 @@ app.post("/api/places", function(req, res) {
 
 
 /* adds a new place to the userID*/
-app.post('/api/users/:userId/favorite_places', function(req, res) {
-  Place.findOne({
+app.post('/api/users/:userId/favoriteLocation', function(req, res) {
+  FavoriteLocation.findOne({
     _id: req.body._id
   }).exec().then(function(place) {
     if (!place) {
@@ -174,7 +174,7 @@ app.post('/api/users/:userId/favorite_places', function(req, res) {
     User.findOne({
       _id: req.params.userId
     }).exec().then(function(user) {
-      user.favorite_places.push(place);
+      user.FavoriteLocations.push(place);
       user.save(function(err) {
         if (err) {
           console.log("cant add this place", err);
@@ -191,10 +191,17 @@ app.post('/api/users/:userId/favorite_places', function(req, res) {
 
 /*gets the users Places*/
 app.get('/api/users', function(req, res) {
-  User.find().populate('favorite_places').exec().then(function(err, new_place) {
+  User.find().populate('favorites').exec().then(function(err, users) {
     return res.json(users);
   })
 })
+
+app.get('/api/users', function(req, res) {
+  Whattado.collection.find(users)
+  return res.json(users)
+
+})
+
 
 
 

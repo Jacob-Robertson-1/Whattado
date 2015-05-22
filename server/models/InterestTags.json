@@ -1,0 +1,48 @@
+InterestTags.json
+
+sport: [{
+  "Soccer": "Boolean",
+  "Football": "Boolean",
+  "Tennis": "Boolean",
+  "Baseball": "Boolean",
+  "Hockey": "Boolean",
+  "IceSkating": "Boolean",
+  "Rugby": "Boolean",
+  "Frisbee": "Boolean",
+  "Golf": "Boolean",
+  "Swimming": "Boolean",
+}]
+food: [{
+  "American": "Boolean",
+  "Chinese": "Boolean",
+  "Italian": "Boolean",
+  "Mexican": "Boolean",
+  "FastFood": "Boolean",
+  "Barbeque": "Boolean",
+  "Burgers": "Boolean",
+  "Thai": "Boolean",
+  "Indian": "Boolean",
+  "BrasserieBistro": "Boolean",
+  "Buffet": "Boolean",
+  "Cafe": "Boolean",
+  "Coffeehouse": "Boolean",
+  "Pub": "Boolean",
+  "Bar": "Boolean",
+  "Dessert": "Boolean",
+  "Sushi": "Boolean"
+}]
+music: [{
+"bandName": "String"
+"genre": "String",
+
+}]
+}]
+activity: [{
+"Hiking": "Boolean",
+"Fishing": "Boolean",
+"Boating": "Boolean",
+
+
+}]
+
+}]

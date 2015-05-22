@@ -41,7 +41,30 @@ var userSchema = new mongoose.Schema({
   zipcode: {
     type: String,
     lowercase: true
+  },
+  friends: {
+    myfriends: [{
+      type: String
+    }]
+  },
+  reviews: {
+    myReviews: [{
+      /*type: Schema.Types.ObjectId,
+      ref: "FavoriteLocation"*/
+    }]
+  },
+  wantToTry: {
+    type: String
+  },
+  favorites: {
+    myFavorites: [{
+      /*type: Schema.Types.ObjectId,
+  ref: "FavoriteLocation"
+*/
+    }]
+
   }
+
 })
 userSchema.pre('save', function(next) {
   var user = this;

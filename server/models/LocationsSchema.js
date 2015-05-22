@@ -1,12 +1,11 @@
-var mongoose require('mongoose')
+var mongoose = require('mongoose')
 
 var FavoriteSchema = new mongoose.Schema({
-  FavoriteLocatonName: {}
+  FavoriteLocatonName: {
+    type: String
+  },
   displayName: {
     type: String,
-  },
-  age: {
-    type: Number
   },
   streetAddress: {
     type: String,
@@ -27,20 +26,33 @@ var FavoriteSchema = new mongoose.Schema({
   zipcode: {
     type: String,
     lowercase: true
-  }
+  },
   reviews: {
-    type: String
+    type: [{
+      message: String,
+      date: Date,
+      friends: Boolean,
+      Public: Boolean,
+      Self: Boolean,
+
+    }]
   },
   coordinates: {
     type: Number
   },
   Interests: {
-    type: String
+    tags: {
+      type: [String],
+      index: true
+    }
   },
   publicReviews: {
     type: String
+  },
+  numberFavorited: {
+    type: Number
   }
 })
 
 
-module.exports = mongoose.model("FavoritePlaces", userSchema)
+module.exports = mongoose.model("FavoriteLocation", FavoriteSchema)

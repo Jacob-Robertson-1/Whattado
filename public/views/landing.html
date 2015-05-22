@@ -1,106 +1,144 @@
 <html>
 
 <body>
-  <div class="container">
-    <div class="leftContainer" ng-controller="mainControl">
-    </div>
-    <div class="friendListContainer" ng-controller="landingControl">
-      <div class="search">
-        <input class="inputFriends" ng-model="findFriend" placeholder="Search Friends">
-        <button class="btn btn-primary" ng-click="">Search friends</button>
-        <h1> Friends!!</h1>
-        <div class="friendscroll">
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i></h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-          <div class='friendContainer'>
-            <img src="pictures/weddingTuxido.jpg">
-            <h4>Jacob Robertson</h4>
-            <h5><i>Bountiful, Utah</i>
-            </h5>
-          </div>
-          <!--^^ end of freindContainer -->
-        </div>
-        <!--^^ end of FreindScroll-->
-      </div>
-      <!-- ^^ end of search>-->
-    </div>
-    <!-- ^^end of rightContainer>-->
+  <div class="filters container">
+    <p>FilterOptions:</p>
+    <option>
+    </option>
   </div>
-  <!-- ^^end of container>-->
+  </div>
+  <div class="container">
+    <div class="templateContainer">
+      <div class="locationsContainer">
+        <div class="suggestedLocationContainer">
+          <div class="suggestedLocationName">
+            <p>Thai Delight</p>
+          </div>
+          <div class="suggestedLocationImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><u>Add to:</u></p>
+          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
+          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
+          <div class="location-actions">
+            <ul>
+              <li>
+                <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
+              </li>
+              <li>
+                <p class="TotalFavorited"> <b>Total Favorited:</b></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- ^^ end of suggest location container -->
+        <div class="suggestedLocationContainer">
+          <div class="suggestedLocationName">
+            <p>Thai Delight</p>
+          </div>
+          <div class="suggestedLocationImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><u>Add to:</u></p>
+          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
+          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
+          <div class="location-actions">
+            <ul>
+              <li>
+                <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
+              </li>
+              <li>
+                <p class="TotalFavorited"><b>Total Favorited:</b></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- ^^ end of suggest location container -->
+        <div class="suggestedLocationContainer">
+          <div class="suggestedLocationName">
+            <p>Thai Delight</p>
+          </div>
+          <div class="suggestedLocationImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><u>Add to:</u></p>
+          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
+          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
+          <div class="location-actions">
+            <ul>
+              <li>
+                <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
+              </li>
+              <li>
+                <p class="TotalFavorited"> <b>Total Favorited:</b></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- ^^ end of suggest location container -->
+        <div class="suggestedLocationContainer">
+          <div class="suggestedLocationName">
+            <p>Thai Delight</p>
+          </div>
+          <div class="suggestedLocationImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><u>Add to:</u></p>
+          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
+          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
+          <div class="location-actions">
+            <ul>
+              <li>
+                <p class="LocationCityState"> <b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
+              </li>
+              <li>
+                <p class="TotalFavorited"> <b>Total Favorited:</b></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- ^^ end of suggest location container -->
+      </div>
+      <!--  ^^ end of locations container -->
+      <div class="friendsListContainer">
+        <div class="friendContainer">
+          <div class="friendImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><b>Jacob Robertson</b></p>
+          <p><i>Bountiful, Utah</i></p>
+        </div>
+        <!-- ^^end of friend Container -->
+        <div class="friendContainer">
+          <div class="friendImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><b>Jacob Robertson</b></p>
+          <p><i>Bountiful, Utah</i></p>
+        </div>
+        <!-- ^^end of friend Container -->
+        <div class="friendContainer">
+          <div class="friendImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><b>Jacob Robertson</b></p>
+          <p><i>Bountiful, Utah</i></p>
+        </div>
+        <!-- ^^end of friend Container -->
+        <div class="friendContainer">
+          <div class="friendImage">
+            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+          </div>
+          <p><b>Jacob Robertson</b></p>
+          <p><i>Bountiful, Utah</i></p>
+        </div>
+        <!-- ^^end of friend Container -->
+      </div>
+      <!-- ^^end of Friend List Container -->
+    </div>
+    <!-- ^^end of template container -->
+  </div>
+  <!-- ^^ end of container -->
 </body>
 
 </html>
