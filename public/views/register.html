@@ -5,28 +5,48 @@
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" placeholder=" Enter Email" class="form-control" required ng-model="user.email">
+      <input type="email" placeholder=" Enter email" class="form-control" required ng-model="newUser.email">
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input placeholder="Password" model="password" type="password" id="inputPassword" class="form-control" required ng-model=" user.pass">
+      <input placeholder="Enter password" model="password" type="password" id="inputPassword" class="form-control" required ng-model=" newUser.password">
+    </div>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" placeholder="Enter first name" class="form-control" required ng-model="newUser.firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" placeholder="Enter fast name" class="form-control" required ng-model="newUser.lastName">
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" placeholder="Enter your Username" class="form-control" required ng-model="newUser.username">
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="text" placeholder="Enter age as a number" class="form-control" required ng-model="newUser.age">
     </div>
     <div class="form-group">
       <label for="address">Address</label>
-      <input type="text" placeholder="Enter Address" class="form-control" required ng-model="user.address">
+      <input type="text" placeholder="Enter address" class="form-control" required ng-model="newUser.address">
     </div>
     <div class="form-group">
       <label for="city">City</label>
-      <input type="text" placeholder="Enter City" class="form-control" required ng-model="user.city">
+      <input type="text" placeholder="Enter city" class="form-control" required ng-model="newUser.city">
     </div>
     <div class="form-group">
       <label for="state">State</label>
-      <input type="text" placeholder="Enter State" class="form-control" required ng-model="user.state">
+      <input type="text" placeholder="Enter state" class="form-control" required ng-model="newUser.state">
     </div>
     <div class="form-group">
       <label for="zipcode">Zipcode</label>
-      <input type="text" placeholder=" Enter Zipcode" class="form-control" required ng-model="user.zipcode">
+      <input type="text" placeholder=" Enter zipcode" class="form-control" required ng-model="newUser.zipcode">
     </div>
-    <button class="btn-btn-default" type="submit" ng-disabled="form.$invalid" ng-click="register()" login-directive>Register</button>
+    <div class="form-group">
+      <label for="img">Image URL</label>
+      <input type="text" placeholder="Enter image URL" class="form-control" required ng-model="newUser.img">
+    </div>
+    <button class="btn-btn-default" type="submit" ng-disabled="form.$invalid" ng-click="addUser()">Register</button>
   </form>
 </div>

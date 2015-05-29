@@ -1,24 +1,59 @@
 var app = angular.module("myapp");
 
 
-app.service("mainService", function() {
+app.service("mainService", function($http, $q) {
 
-  /*  this.postfavoriteLocation = function(yourName) {
-      return $http({
-        method: 'POST',
-        url: 'mongodb://localhost:27017/Whattado',
-        data: {
-          LocationName: ""
-        }
-      })
-    }
+  this.getPlaces = function() {
 
-    this.getFavoriteLocation = function() {
-      return $http({
-        method: 'GET',
-        url: 'mongodb://localhost:27017/Whattado'
-      });
-    };
-  */
+    var url = '/api/favoritePlace';
+    return $http({
+      method: 'GET',
+      url: url
+    }).then(function(response) {
+      return response.data;
+    });
+  };
 
+
+  this.addPlace = function(Place) {
+    var url = '/api/favoritePlace';
+    return $http({
+      method: 'POST',
+      url: url,
+      data: Place
+    });
+  };
+
+
+  this.getUsers = function() {
+
+    var url = '/api/users';
+    return $http({
+      method: 'GET',
+      url: url
+    }).then(function(response) {
+      return response.data;
+    });
+  };
+
+
+  this.addUser = function(User) {
+    var url = '/api/users';
+
+    return $http({
+      method: 'POST',
+      url: url,
+      data: User
+    });
+  };
+
+
+  this.addfavorites = function(User) {
+    var url = '/api/users/:userId/favorites/myfavorites';
+    return $http({
+      method: "POST",
+      url: url,
+      data: User
+    })
+  };
 });

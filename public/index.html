@@ -8,16 +8,19 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <header>
-  <div class="UserLinks">
-    <a ui-sref="myFavorites"> My favorites</a>
-    <a ui-sref="myReviews"> My Reviews</a>
-    <a ui-sref="myWanttotrylist"> Want to try List</a>
-    <a ui-sref="landing">Home Page</a>
-  </div>
-  <div class="rightHeadContainer">
-    <a ui-sref="register">Create Account</a>
-    <a ui-sref="login">Login</a>
-    <a ui-sref="home">Logout</a>
+  <div class="navbar navbar-inverse">
+    <div class="UserLinks">
+      <a class="mylinks" ui-sref="myLocations"> My favorites</a>
+      <a class="mylinks" ui-sref="myReviews"> My Reviews</a>
+      <a class="mylinks" ui-sref="myWanttotrylist"> Want to try List</a>
+      <a class="mylinks" ui-sref="landing">Home Page</a>
+      <a class="mylinks" ui-sref="addNewLocation">Add New Location</a>
+    </div>
+    <div class="rightHeadContainer">
+      <a class="mainlinks" ui-sref="register">Create Account</a>
+      <a class="mainlinks" ui-sref="login">Login</a>
+      <a class="mainlinks" href="/logout">Logout</a>
+    </div>
   </div>
 </header>
 
@@ -38,6 +41,7 @@
   <script src="/controllers/myReviewsControl.js"></script>
   <script src="/controllers/RegisterControl.js"></script>
   <script src="/controllers/myWantToTryControl.js"></script>
+  <script src="/controllers/addNewLocationControl.js"></script>
   <script src="/services/mainService.js"></script>
   <script src="/services/landingService.js"></script>
   <script src="/services/userService.js"></script>

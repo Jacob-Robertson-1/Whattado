@@ -4,11 +4,15 @@
       <h2 class> Welcome</h2>
       <h4> Please Log in</h4>
       <label for="email">Email</label>
-      <input type="text" placeholder=" Enter Emsail" class="form-control" required ng-model="user.email">
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input placeholder="Password" model="password" type="password" id="inputPassword" class="form-control" required ng-model=" user.pass">
-      </div>
-      <button class="btn-btn-default" type="submit" ng-disabled="form.$invalid" ng-click="login(user)" login-directive>Login</button>
+      <input type="text" placeholder=" Enter Email" class="form-control" required ng-model="user.email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input placeholder="Password" model="password" type="password" id="inputPassword" class="form-control" required ng-model=" user.password">
+    </div>
+    <button class="btn-btn-default" type="submit" ng-disabled="form.$invalid" ng-click="clickLogin(user)" login-directive>Login</button>
+
+    <!-- <a href="/auth/facebook"><img src="http://i.imgur.com/mzyTn9w.png" /></a> -->
+
   </form>
-  </div>
+</div>

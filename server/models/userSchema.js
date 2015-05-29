@@ -1,72 +1,98 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs')
+var Schema = mongoose.Schema;
+var q = require('q');
 
-var userSchema = new mongoose.Schema({
+var userFriend = require('./userFriendSchema');
+
+var userSchema = new Schema({
+  /*facebookId: {
+  type: String,
+  unique: true
+},
+*/
+  firstName: {
+    type: String
+  },
+  lastName: {
+    type: String
+  },
+  gender: {
+    type: String
+  },
+  location: {
+    type: String
+  },
   email: {
     type: String,
     unique: true,
-    sparse: true,
-    lowercase: true
+    sparse: true
   },
-  firstName: {
+  username: {
     type: String,
-    lowercase: true
+    sparse: true
   },
-  lastName: {
-    type: String,
-    lowercase: true
-  },
-  displayName: {
-    type: String,
-  },
-  age: {
-    type: Number
-  },
-  streetAddress: {
-    type: String,
-    lowercase: true
+  password: {
+    type: String
   },
   city: {
-    type: String,
-    lowercase: true
+    type: String
   },
   state: {
-    type: String,
-    lowercase: true
+    type: String
   },
-  country: {
-    type: String,
-    lowercase: true
+  zipCode: {
+    type: String
   },
-  zipcode: {
-    type: String,
-    lowercase: true
+  member: {
+    type: Boolean,
+    default: true
+  },
+  bio: {
+    type: String
+  },
+  facebookProfilePic: {
+    type: String
+  },
+  birthday: {
+    type: String
+  },
+  tags: {
+    type: String
+  },
+  updated: {
+    type: Date,
+    default: Date.now
   },
   friends: {
     myfriends: [{
-      type: String
-    }]
+        /// check to see if i can store names
+        type: userFriend
+      }]
+      //[userFriendSchema]  http://mongoosejs.com/docs/schematypes.html
   },
   reviews: {
     myReviews: [{
-      /*type: Schema.Types.ObjectId,
-      ref: "FavoriteLocation"*/
+      type: Schema.Types.ObjectId,
+      ref: 'favoritePlace'
     }]
   },
   wantToTry: {
-    type: String
+    myWantToTry: [{
+      type: Schema.Types.ObjectId,
+      ref: 'favoritePlace'
+    }]
   },
   favorites: {
     myFavorites: [{
-      /*type: Schema.Types.ObjectId,
-  ref: "FavoriteLocation"
-*/
+      type: Schema.Types.ObjectId,
+      ref: 'favoritePlace'
+
     }]
-
   }
+});
 
-})
-userSchema.pre('save', function(next) {
+/*userSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) {
     return next()
@@ -90,5 +116,5 @@ userSchema.methods.comparePw = function(password, cb) {
     if (err) return cb(err, null);
     else cb(null, res);
   })
-}
+}*/
 module.exports = mongoose.model("User", userSchema)

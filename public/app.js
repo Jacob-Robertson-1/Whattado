@@ -9,7 +9,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state("home", {
       url: "/",
       templateUrl: "/views/home.html",
-      controller: "mainControl"
+      controller: "mainControl",
+      resolve: {
+        locations: function(mainService) {
+          return mainService.getLocations();
+        }
+      }
     })
     .state("login", {
       url: '/login',
@@ -36,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "/views/myreviews.html",
       controller: "myReviewsControl"
     })
-    .state('wantToTry', {
+    .state('wantToTryList', {
       url: "/myWantToTry",
       templateUrl: "/views/wantToTry.html",
       controller: "myWantToTryControl"
@@ -45,6 +50,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: "/register",
       templateUrl: "/views/register.html",
       controller: "RegisterControl"
+    })
+    .state("addNewLocation", {
+      url: "/addNewLocation",
+      templateUrl: "/views/addNewLocation.html",
+      controller: "addNewLocationControl"
     })
 
 

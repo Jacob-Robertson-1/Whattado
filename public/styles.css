@@ -5,15 +5,6 @@ html body {
   background: #E0E0E0;
 }
 
-header {
-  height: 75px;
-  width: 100%;
-  background: #6DA0B4;
-  color: white;
-  margin: 0 auto;
-  position: fixed;
-}
-
 h1 {
   text-align: center;
 }
@@ -63,7 +54,7 @@ h1 {
 }
 
 .suggestedLocationContainer {
-  height: 275px;
+  height: 320px;
   width: 250px;
   border: 2px solid black;
   border-radius: 15px;
@@ -110,6 +101,7 @@ h1 {
   padding-left: 10px;
   overflow: scroll;
   overflow-x: hidden;
+  padding-top: 75px;
 }
 
 .friendContainer {
@@ -128,4 +120,33 @@ h1 {
 
 .templateContainer {
   padding: 10px;
+}
+
+.reviewText {
+  width: 600px;
+  float: right;
+}
+
+.reviewType {
+  float: left;
+  margin-bottom: 10px;
+}
+
+.reviewContainer {
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  float: left;
+  margin: 10px;
+  background: white;
+}
+
+.mylinks {
+  padding: 0px 5px 5px 5px;
+}
+
+.mainlinks {
+  padding: 0px 5px 5px 5px;
 }

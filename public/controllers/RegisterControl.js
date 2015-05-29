@@ -1,7 +1,12 @@
 var app = angular.module("myapp")
 
-app.controller("RegisterControl", function($scope) {
+app.controller("RegisterControl", function($scope, mainService) {
 
-  $scope.test = "test"
+  $scope.newUser = {};
+
+  $scope.addUser = function() {
+    mainService.addUser($scope.newUser);
+    $scope.newUser = {};
+  }
 
 });

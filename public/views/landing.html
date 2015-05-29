@@ -10,86 +10,20 @@
   <div class="container">
     <div class="templateContainer">
       <div class="locationsContainer">
-        <div class="suggestedLocationContainer">
+        <div ng-repeat="place in places" class="suggestedLocationContainer">
           <div class="suggestedLocationName">
-            <p>Thai Delight</p>
+            <p>{{place.name}}</p>
           </div>
           <div class="suggestedLocationImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+            <img src="{{place.img}}">
           </div>
           <p><u>Add to:</u></p>
-          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
+          <button class="trylinks" ng-click="addFavorite(place._id)">Favorites</button>
+          <button class="trylinks" ng-click="addWantToTry(place)">Want to try</button>
           <div class="location-actions">
             <ul>
               <li>
-                <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
-              </li>
-              <li>
-                <p class="TotalFavorited"> <b>Total Favorited:</b></p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- ^^ end of suggest location container -->
-        <div class="suggestedLocationContainer">
-          <div class="suggestedLocationName">
-            <p>Thai Delight</p>
-          </div>
-          <div class="suggestedLocationImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-          </div>
-          <p><u>Add to:</u></p>
-          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
-          <div class="location-actions">
-            <ul>
-              <li>
-                <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
-              </li>
-              <li>
-                <p class="TotalFavorited"><b>Total Favorited:</b></p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- ^^ end of suggest location container -->
-        <div class="suggestedLocationContainer">
-          <div class="suggestedLocationName">
-            <p>Thai Delight</p>
-          </div>
-          <div class="suggestedLocationImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-          </div>
-          <p><u>Add to:</u></p>
-          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
-          <div class="location-actions">
-            <ul>
-              <li>
-                <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
-              </li>
-              <li>
-                <p class="TotalFavorited"> <b>Total Favorited:</b></p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- ^^ end of suggest location container -->
-        <div class="suggestedLocationContainer">
-          <div class="suggestedLocationName">
-            <p>Thai Delight</p>
-          </div>
-          <div class="suggestedLocationImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-          </div>
-          <p><u>Add to:</u></p>
-          <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-          <button class="trylinks" ng-click="addFavorite()">Want to try</button>
-          <div class="location-actions">
-            <ul>
-              <li>
-                <p class="LocationCityState"> <b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
+                <p class="LocationCityState"><b>Location:</b> <i>{{place.address}}, {{place.city}}, {{place.state}}</i></p>
               </li>
               <li>
                 <p class="TotalFavorited"> <b>Total Favorited:</b></p>
@@ -100,37 +34,15 @@
         <!-- ^^ end of suggest location container -->
       </div>
       <!--  ^^ end of locations container -->
-      <div class="friendsListContainer">
-        <div class="friendContainer">
+      <div class="friendsListContainer" ng-if="isValidUser">
+        <input placeholder="Enter Friend ID" ng-model="newFriend.friendId">
+        <button class="btn-btn-default" type="submit" ng-click="addfriend(friendId)">Add Friend</button>
+        <div ng-repeat="user in users" class="friendContainer">
           <div class="friendImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+            <img src="{{user.img}}">
           </div>
-          <p><b>Jacob Robertson</b></p>
-          <p><i>Bountiful, Utah</i></p>
-        </div>
-        <!-- ^^end of friend Container -->
-        <div class="friendContainer">
-          <div class="friendImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-          </div>
-          <p><b>Jacob Robertson</b></p>
-          <p><i>Bountiful, Utah</i></p>
-        </div>
-        <!-- ^^end of friend Container -->
-        <div class="friendContainer">
-          <div class="friendImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-          </div>
-          <p><b>Jacob Robertson</b></p>
-          <p><i>Bountiful, Utah</i></p>
-        </div>
-        <!-- ^^end of friend Container -->
-        <div class="friendContainer">
-          <div class="friendImage">
-            <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-          </div>
-          <p><b>Jacob Robertson</b></p>
-          <p><i>Bountiful, Utah</i></p>
+          <p><b>{{user.firstName}} {{user.lastName}}</b></p>
+          <p><i>{{user.city}}, {{user.state}}</i></p>
         </div>
         <!-- ^^end of friend Container -->
       </div>
@@ -142,3 +54,25 @@
 </body>
 
 </html>
+<!-- Create a new friend user schema
+friend ID
+    finding new things to try
+      
+    Joining friends to do things
+      user Register
+    Change log in to take user name & password plain text
+      later come back and and encrypt
+    Add friend
+      get friends id
+        which allows me to get user name
+        simple add friend page
+    add friends on the landing page
+    
+
+    Bonus
+    Details on the location
+      information on the location
+
+  user get user id and get all the documents pertaining to that user
+  
+ -->
