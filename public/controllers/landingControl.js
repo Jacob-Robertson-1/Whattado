@@ -31,6 +31,15 @@ app.controller("landingControl", ["$scope", "mainService", "userService", "login
 
   };
 
+  $scope.newFriend = {};
+  $scope.addfriend = function(friendId) {
+    mainService.addFriend(friendId, loginService.currentUserToken).then(function() {
+      $scope.newFriend = {};
+    });
+
+  };
+
+
 
 
 

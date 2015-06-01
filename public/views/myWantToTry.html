@@ -1,84 +1,18 @@
 <div class="locationsContainer">
-  <div class="suggestedLocationContainer">
+  <div ng-repeat="place in places" class="suggestedLocationContainer">
     <div class="suggestedLocationName">
-      <p>Thai Delight</p>
+      <p>{{place.name}}</p>
     </div>
     <div class="suggestedLocationImage">
-      <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
+      <img src="{{place.img}}">
     </div>
     <p><u>Add to:</u></p>
-    <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-    <button class="trylinks" ng-click="addFavorite()">Want to try</button>
+    <button class="trylinks" ng-click="moveToFavorite(place._id)">Favorites</button>
+    <button class="trylinks" ng-click="removeWantToTry(place._id)">Remove</button>
     <div class="location-actions">
       <ul>
         <li>
-          <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
-        </li>
-        <li>
-          <p class="TotalFavorited"> <b>Total Favorited:</b></p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- ^^ end of suggest location container -->
-  <div class="suggestedLocationContainer">
-    <div class="suggestedLocationName">
-      <p>Thai Delight</p>
-    </div>
-    <div class="suggestedLocationImage">
-      <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-    </div>
-    <p><u>Add to:</u></p>
-    <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-    <button class="trylinks" ng-click="addFavorite()">Want to try</button>
-    <div class="location-actions">
-      <ul>
-        <li>
-          <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
-        </li>
-        <li>
-          <p class="TotalFavorited"><b>Total Favorited:</b></p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- ^^ end of suggest location container -->
-  <div class="suggestedLocationContainer">
-    <div class="suggestedLocationName">
-      <p>Thai Delight</p>
-    </div>
-    <div class="suggestedLocationImage">
-      <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-    </div>
-    <p><u>Add to:</u></p>
-    <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-    <button class="trylinks" ng-click="addFavorite()">Want to try</button>
-    <div class="location-actions">
-      <ul>
-        <li>
-          <p class="LocationCityState"><b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
-        </li>
-        <li>
-          <p class="TotalFavorited"> <b>Total Favorited:</b></p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- ^^ end of suggest location container -->
-  <div class="suggestedLocationContainer">
-    <div class="suggestedLocationName">
-      <p>Thai Delight</p>
-    </div>
-    <div class="suggestedLocationImage">
-      <img src="http://www.comohotels.com/metropolitanbangkok/sites/default/files/styles/background_image/public/images/background/metbkk_bkg_nahm_restaurant.jpg?itok=GSmnYYaU">
-    </div>
-    <p><u>Add to:</u></p>
-    <button class="trylinks" ng-click="addFavorite()">Favorites</button>
-    <button class="trylinks" ng-click="addFavorite()">Want to try</button>
-    <div class="location-actions">
-      <ul>
-        <li>
-          <p class="LocationCityState"> <b>Location:</b> <i>1234 west 800 south Bountiful, Utah</i></p>
+          <p class="LocationCityState"><b>Location:</b> <i>{{place.address}}, {{place.city}}, {{place.state}}</i></p>
         </li>
         <li>
           <p class="TotalFavorited"> <b>Total Favorited:</b></p>

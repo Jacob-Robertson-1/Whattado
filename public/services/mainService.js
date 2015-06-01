@@ -14,6 +14,17 @@ app.service("mainService", function($http, $q) {
     });
   };
 
+  this.getMyWantToTryPlaces = function() {
+
+    var url = '/api/users/:CurrentUserId/wantToTry/myWantToTry';
+    return $http({
+      method: 'GET',
+      url: url
+    }).then(function(response) {
+      return response.data;
+    });
+  };
+
 
   this.addPlace = function(Place) {
     var url = '/api/favoritePlace';
@@ -44,6 +55,17 @@ app.service("mainService", function($http, $q) {
       method: 'POST',
       url: url,
       data: User
+    });
+  };
+
+  this.addFriend = function(friendId, userId) {
+    var url = '/api/User/$CurrentUserId/Friends/$FriendId';
+
+    var newUrl = url.replace("$CurrentUserId", userId).replace("$FriendId", friendId);
+
+    return $http({
+      method: 'PUT',
+      url: newUrl
     });
   };
 

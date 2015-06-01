@@ -14,11 +14,6 @@ app.controller("userControl", function($scope, mainService, userService) {
     user.favorites.myfavorites.data.splice(index, 1);
   }
 
-  $scope.newFriend = {};
 
-  $scope.addUser = function() {
-    mainService.addFriend($scope.newFriend);
-    $scope.newFriend = {};
-  }
 
 });

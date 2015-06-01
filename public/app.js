@@ -43,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('wantToTryList', {
       url: "/myWantToTry",
-      templateUrl: "/views/wantToTry.html",
+      templateUrl: "/views/myWantToTry.html",
       controller: "myWantToTryControl"
     })
     .state('register', {

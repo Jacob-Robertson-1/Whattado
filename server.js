@@ -12,6 +12,7 @@ var cookies = require('cookie-parser');
 //require user model
 var User = require('./server/models/userSchema');
 var FavoritePlace = require("./server/models/FavoritePlaceSchema");
+var UserFriend = require("./server/models/userFriendSchema");
 
 //express
 
@@ -173,8 +174,21 @@ app.post("/api/favoritePlace", function(req, res) {
     }
     res.json(new_place)
   })
-})
+});
 
+function existsInArrayById(array, objectId) {
+  var exists = false;
+  for (var i = 0; i < array.length; i++) {
+    console.log(array[i]);
+    //console.log(id);
+    if (objectId.id === array[i].id) {
+      exists = true;
+    } else {
+      exists = false;
+    }
+  };
+  return exists;
+};
 
 /* adds a new place to the userID*/ //RENAME to favoritePlace and refactor
 app.post('/api/users/me/favorites/myfavorites', function(req, res) {
@@ -185,18 +199,16 @@ app.post('/api/users/me/favorites/myfavorites', function(req, res) {
       return res.status(404).end();
     }
     User.findOne({
-      _id: "55676d079a06e9f815323913" //req.params.userId
+      _id: "556b8086ff6cc8741b4e5229" //req.params.userId
     }).exec().then(function(user) {
-      var x = true;
-      for (var i = 0; i < user.favorites.length; i++) {
-        if (place._id === user.favorites[i]) {
-          x = true;
-        } else {
-          x = false
-        }
-      }
-      if (x == false) {
-        user.favorites.push(place._id);
+      var favorites = user.favorites.myFavorites;
+      var exists = existsInArrayById(favorites, place._id);
+      console.log(exists);
+
+      if (!exists) {
+
+        console.log(user);
+        favorites.push(place._id);
         user.save(function(err) {
           if (err) {
             console.log("cant add this place", err);
@@ -208,7 +220,8 @@ app.post('/api/users/me/favorites/myfavorites', function(req, res) {
   });
 });
 
-/*addsa place to your Want to try list*/
+
+/*adds a place to your Want to try list*/
 app.post('/api/users/me/wantToTry/myWantToTry', function(req, res) {
   FavoritePlace.findOne({
     _id: req.body._id
@@ -217,37 +230,123 @@ app.post('/api/users/me/wantToTry/myWantToTry', function(req, res) {
       return res.status(404).end();
     }
     User.findOne({
-      _id: "55676d079a06e9f815323913" //req.params.userId
+      _id: "556b8086ff6cc8741b4e5229" //req.params.userId
     }).exec().then(function(user) {
-      user.wantToTry.push(place._id);
-      user.save(function(err) {
-        if (err) {
-          console.log("cant add this place", err);
-        }
-        res.json(user);
-      });
+      console.log(user);
+      var wantToTry = user.wantToTry.myWantToTry;
+      var exists = existsInArrayById(wantToTry, place._id);
+      console.log(exists);
+      if (!exists) {
+        wantToTry.push(place._id);
+        user.save(function(err) {
+          if (err) {
+            console.log("cant add this place", err);
+          }
+          res.json(user);
+        });
+      }
     });
   });
 });
 
-// addsa new friend to your UserID
-app.post('/api/users/:userId/friendsfavorites/myfriends', function(req, res) {
-  User.findOne({
+// move a place from your wantToTry to your Favorites
+app.put('/api/users/:CurrentUserId/favorites/myfavorites/moveTo', function(req, res) {
+  FavoritePlace.findOne({
     _id: req.body._id
-  }).exec().then(function(userId) {
-    if (!userId) {
+  }).exec().then(function(place) {
+    if (!place) {
       return res.status(404).end();
     }
     User.findOne({
-      _id: req.params.userId
-    }).exec().then(function(userId) {
-      user.friends.myfriends.push(userId);
-      user.save(function(err) {
-        if (err) {
-          console.log("cant add this place", err);
+      _id: req.params.CurrentUserId
+    }).exec().then(function(currentUser) {
+      console.log(user);
+      var wantToTry = currentUser.wantToTry.myWantToTry;
+      var favorites = currentUser.favorites.myfavorites;
+      var existsfavorites = existsInArrayById(favorites, place._id);
+      console.log(exists);
+      if (!exists) {
+        //favorites.push(place._id);
+        Array.prototype.move = function(wantToTry, favorites) {
+          place.splice(favorites, 0, place.splice(wantToTry, 1)[0]);
+        };
+        currentUser.save(function(err) {
+          if (err) {
+            console.log("cant add this place", err);
+          }
+          res.json(currentUser);
+        });
+      }
+    });
+  });
+});
+
+// adds a place to your favorites
+app.post('/api/users/me/favorites/myfavorites', function(req, res) {
+  FavoritePlace.findOne({
+    _id: req.body._id
+  }).exec().then(function(place) {
+    if (!place) {
+      return res.status(404).end();
+    }
+    User.findOne({
+      _id: "556b8086ff6cc8741b4e5229" //req.params.userId
+    }).exec().then(function(user) {
+      var favorites = user.favorites.myFavorites;
+      var exists = existsInArrayById(favorites, place._id);
+      console.log(exists);
+
+      if (!exists) {
+
+        console.log(user);
+        favorites.push(place._id);
+        user.save(function(err) {
+          if (err) {
+            console.log("cant add this place", err);
+          }
+          res.json(user);
+        })
+      }
+    })
+  });
+});
+
+// adds a new friend to your UserID
+app.put('/api/User/:CurrentUserId/Friends/:FriendId', function(req, res) {
+  console.log("req.params:", req.params.FriendId);
+  User.findOne({
+    _id: req.params.FriendId
+  }).exec().then(function(friend) {
+    //console.log(user);
+    if (!friend) {
+      return res.status(404).end();
+    }
+    User.findOne({
+      _id: req.params.CurrentUserId
+    }).exec().then(function(currentuser) {
+      var myfriends = currentuser.friends.myfriends;
+      var exists = existsInArrayById(myfriends, currentuser._id);
+      //console.log(currentuser)
+      if (!exists) {
+        var newFriend =(
+            {
+              userid: friend._doc._id,
+              friendFirstName: friend._doc.firstName,
+              friendLastName: friend._doc.lastName
+            });
+        try {
+          myfriends.push(newFriend);
+        } catch(ex){
+          var str = ex;
         }
-        res.json(user);
-      });
+        console.log(newFriend);
+        currentuser.save(function (err) {
+          if (err) {
+            console.log("cant add this place", err);
+          }
+          res.json(currentuser);
+        });
+      }
     });
   });
 });
@@ -336,12 +435,27 @@ app.get('/api/users/userId', requireAuth, function(req, res) {
 });*/
 
 
-/*Creating a place*/ //RENAME to favoritePlace and refactor
+User.find({
+  _id: req.params.CurrentUserId
+}).then(function(err, myWantToTry) {
+  res.send(user);
+})
+
+
+/*gets all the Places*/
 app.get("/api/favoritePlace", function(req, res) {
   FavoritePlace.find(function(err, places) {
     res.send(places);
   });
-})
+});
+
+/*gets all the users Want To try*/
+app.get("/api/users/:CurrentUserId/wantToTry/myWantToTry", function(req, res) {
+  FavoritePlace.find(function(err, places) {
+    res.send(places);
+  });
+
+});
 
 
 

@@ -37,15 +37,6 @@ app.service("userService", function($http, $q) {
     return dfd.promise;
   }; // 
 
-  this.addFriend = function(FriendId) {
-    var url = '/api/users/:userId';
-
-    return $http({
-      method: 'POST',
-      url: url,
-      data: User
-    });
-  };
 
   this.addFavorite = function(place) {
     console.log(place);
@@ -61,6 +52,7 @@ app.service("userService", function($http, $q) {
     });
     return deferred.promise;
   };
+
   this.addWantToTry = function(place) {
     console.log(place);
     var deferred = $q.defer();
@@ -75,6 +67,41 @@ app.service("userService", function($http, $q) {
     });
     return deferred.promise;
   };
+
+
+  this.moveToFavorite = function(place) {
+    var url = '/api/User/$CurrentUserId/favorites/myfavorites/moveTo';
+
+    var newUrl = url.replace("$CurrentUserId", userId).replace("$FriendId", friendId);
+
+    var deferred = $q.defer();
+    $http({
+      method: 'PUT',
+      url: newUrl
+    }).then(function(response) {
+      deferred.resolve(response.data);
+    });
+    return deferred.promise;
+  };
+
+
+
+  /*this.removeWantToTry = function(place) {
+    console.log(place);
+    var deferred = $q.defer();
+    $http({
+      method: 'DELETE',
+      url: '/api/users/remove/wantToTry/myWantToTry',
+      data: {
+        _id: place
+      }
+    }).then(function(response) {
+      deferred.resolve(response.data);
+    });
+    return deferred.promise;
+  };*/
+
+
 
 
 });

@@ -19,7 +19,7 @@
           </div>
           <p><u>Add to:</u></p>
           <button class="trylinks" ng-click="addFavorite(place._id)">Favorites</button>
-          <button class="trylinks" ng-click="addWantToTry(place)">Want to try</button>
+          <button class="trylinks" ng-click="addWantToTry(place._id)">Want to try</button>
           <div class="location-actions">
             <ul>
               <li>
@@ -36,7 +36,7 @@
       <!--  ^^ end of locations container -->
       <div class="friendsListContainer" ng-if="isValidUser">
         <input placeholder="Enter Friend ID" ng-model="newFriend.friendId">
-        <button class="btn-btn-default" type="submit" ng-click="addfriend(friendId)">Add Friend</button>
+        <button class="btn-btn-default" type="submit" ng-click="addfriend(newFriend.friendId)">Add Friend</button>
         <div ng-repeat="user in users" class="friendContainer">
           <div class="friendImage">
             <img src="{{user.img}}">

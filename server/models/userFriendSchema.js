@@ -20,4 +20,4 @@ var userFriendSchema = new Schema({
 })
 
 
-module.exports = mongoose.model("UserFriend", userFriendSchema)
+module.exports = userFriendSchema;

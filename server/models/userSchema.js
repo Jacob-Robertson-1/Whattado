@@ -65,10 +65,7 @@ var userSchema = new Schema({
     default: Date.now
   },
   friends: {
-    myfriends: [{
-        /// check to see if i can store names
-        type: userFriend
-      }]
+    myfriends: [userFriend]
       //[userFriendSchema]  http://mongoosejs.com/docs/schematypes.html
   },
   reviews: {
